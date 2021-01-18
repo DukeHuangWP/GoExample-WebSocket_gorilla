@@ -19,6 +19,6 @@ go get github.com/gorilla/websocket
 
 ## Demo
 
-![Demo](https://github.com/DukeHuangWP/GoExample-WebSocket_gorilla/master/Demo.gif?raw=true)
+![Demo](https://github.com/DukeHuangWP/GoExample-WebSocket_gorilla/blob/master/Demo.gif?raw=true)
 
 
