@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html  lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket Server</title>
+</head>
+<body>
+    <input id="HID_input" type="text" style="width:31%"/>
+    <button onclick="JSFC_send()">Send</button>
+    <pre id="HID_output"></pre>
+    <script>
+        var JSV_input = document.getElementById('HID_input');
+        var JSV_output = document.getElementById('HID_output');
+        var JSV_socket = new WebSocket("ws://" + window.location.host + "/GET_websocket");
+
+
+        JSV_socket.onopen = function() {
+           JSV_output.innerHTML += window.location.host  + "  .... Connection OK\n";
+        };
+
+        JSV_socket.onmessage = function(e) {
+            JSV_output.innerHTML += "Get message from server: " + e.data + "\n";
+        };
+
+
+        function JSFC_send() {
+            console.log("Send : "+JSON.stringify(
+                {
+                    Message: JSV_input.value,
+                }));
+            JSV_socket.send(JSON.stringify(
+                {
+                    Message: JSV_input.value,
+                }
+            )); 
+            JSV_input.value = "";
+        };
+
+
+    </script>
+</body>
+</html>
